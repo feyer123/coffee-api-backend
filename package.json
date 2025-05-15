@@ -9,9 +9,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.810.0",
+    "@supabase/supabase-js": "^2.49.4",
     "aws-sdk": "^2.1692.0",
     "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "luxon": "^3.6.1",
+    "micro-cors": "^0.1.1",
+    "nodemailer": "^7.0.3"
   },
   "description": ""
 }
