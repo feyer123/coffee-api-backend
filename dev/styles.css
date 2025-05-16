@@ -251,7 +251,7 @@ nav {
 }
 /* Blog Hero Image */
 .hero-blog {
-  background: url('journal.jpg') no-repeat center center;
+  background: url('dev/journal.jpg') no-repeat center center;
   background-size: cover;
   height: 60vh;
 }
@@ -697,6 +697,40 @@ nav {
   margin-bottom: 1.5rem;
   max-width: 500px;
 }
+.blog-links {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  width: 100%;
+  max-width: 600px;
+  text-align: left;
+}
+
+.blog-links li {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.blog-links a {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #2d6a4f;
+  text-decoration: none;
+}
+
+.blog-links a:hover {
+  text-decoration: underline;
+  color: #b35c1e;
+}
+
+.post-date {
+  display: block;
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 0.25rem;
+}
+
 
 .contact-form {
   width: 100%;
@@ -736,5 +770,10 @@ nav {
 
   .contact-form {
     max-width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .blog-links {
+    padding: 0 1rem;
   }
 }
