@@ -670,18 +670,20 @@ nav {
 
 .hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.85); /* soft glass look */
   padding: 2rem;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(30, 30, 30, 0.75);
-  color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  color: #333;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  gap: 1rem;
 }
 
 .hero-overlay h2 {
