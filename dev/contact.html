@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Essential Services Coffee Roasters</title>
+<link rel="stylesheet" href="styles.css?v=6">
+
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <div class="logo">
+      <a href="/">
+        <img src="images/essential.svg" alt="Essential Services Coffee Roasters Logo" class="logo-img">
+      </a>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="featured.html">Roasts</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger">&#9776;</div>
+    </nav>
+  </div>
+</header>
+
+  <!-- Hero Image Section -->
+<!-- Hero Section with Image and Form Overlay -->
+<div class="hero-contact-wrapper">
+  <div class="hero-contact"></div>
+
+  <div class="hero-overlay">
+    <section class="contact">
+      <div class="contact-container">
+        <h2>Get in Touch</h2>
+        <p>Have a question or comment? Send us a message below.</p>
+
+        <form id="contactForm">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="input-field">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+
+          <div class="input-field">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" placeholder="Subject">
+          </div>
+
+          <div class="message-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+          </div>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+  <p>&copy; 2025 Essential Services Coffee Roasters - Alta, WY</p>
+  <p><a href="https://instagram.com/essentialservicescoffee" target="_blank">Follow us on Instagram</a></p>
+</footer>
+
+<!-- Updated Form Handler (via Vercel API) -->
+<script>
+  document.getElementById("contactForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value;
+
+    try {
+      const response = await fetch("https://coffee-api-clean.vercel.app/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, subject, message })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Unknown error occurred");
+      }
+
+      alert("Thank you! Your message has been sent.");
+      event.target.reset();
+    } catch (error) {
+      alert("Error sending message: " + error.message);
+    }
+  });
+</script>
+
+
+<!-- Mobile Nav Toggle -->
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+</body>
+</html>
