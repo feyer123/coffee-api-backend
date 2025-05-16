@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact - Essential Services Coffee Roasters</title>
-<link rel="stylesheet" href="styles.css?v=6">
-
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 
-<!-- Header -->
 <header class="site-header">
   <div class="container">
     <div class="logo">
@@ -31,54 +29,45 @@
   </div>
 </header>
 
-  <!-- Hero Image Section -->
-<!-- Hero Section with Image and Form Overlay -->
-<div class="hero-contact-wrapper">
-  <div class="hero-contact"></div>
+<section class="contact-section">
+  <img src="images/contact.jpg" alt="Contact Hero" class="hero-image" />
 
-  <div class="hero-overlay">
-    <section class="contact">
-      <div class="contact-container">
-        <h2>Get in Touch</h2>
-        <p>Have a question or comment? Send us a message below.</p>
+  <div class="contact-container">
+    <h2>Get in Touch</h2>
+    <p>Have a question or comment? Send us a message below.</p>
 
-        <form id="contactForm">
-          <div class="input-group">
-            <div class="input-field">
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" placeholder="Your Name" required>
-            </div>
-            <div class="input-field">
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" required>
-            </div>
-          </div>
-
-          <div class="input-field">
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" placeholder="Subject">
-          </div>
-
-          <div class="message-group">
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
-          </div>
-
-          <button type="submit">Send Message</button>
-        </form>
+    <form id="contactForm" class="contact-form">
+      <div class="input-group">
+        <div class="input-field">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="input-field">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
       </div>
-    </section>
+
+      <div class="input-field">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject">
+      </div>
+
+      <div class="message-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+      </div>
+
+      <button type="submit">Send Message</button>
+    </form>
   </div>
-</div>
-
-
+</section>
 
 <footer class="site-footer">
   <p>&copy; 2025 Essential Services Coffee Roasters - Alta, WY</p>
   <p><a href="https://instagram.com/essentialservicescoffee" target="_blank">Follow us on Instagram</a></p>
 </footer>
 
-<!-- Updated Form Handler (via Vercel API) -->
 <script>
   document.getElementById("contactForm").addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -108,11 +97,7 @@
       alert("Error sending message: " + error.message);
     }
   });
-</script>
 
-
-<!-- Mobile Nav Toggle -->
-<script>
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
   hamburger.addEventListener('click', () => {
