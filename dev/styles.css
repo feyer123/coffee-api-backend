@@ -706,6 +706,7 @@ nav {
 @media (max-width: 768px) {
   .hero-overlay {
     position: static;
+    transform: none; /* 🔧 THIS FIXES IT */
     background-color: #f9f7f5;
     color: #333;
     padding: 2rem 1rem;
@@ -735,3 +736,4 @@ nav {
     max-width: 100%;
   }
 }
+
