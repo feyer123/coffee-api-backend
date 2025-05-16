@@ -439,14 +439,16 @@ nav {
 
 .blog-links a {
   font-weight: bold;
-  font-size: 1rem;
-  color: #fff;
-  text-decoration: underline;
+  font-size: 1.1rem;
+  color: #333; /* matches overlay paragraph text */
+  text-decoration: none;
 }
 
 .blog-links a:hover {
-  color: #b35c1e;
+  text-decoration: underline;
+  color: #a0522d; /* warm brown on hover */
 }
+
 
 /*
 .hero-overlay a {
