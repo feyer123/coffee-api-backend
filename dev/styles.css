@@ -245,19 +245,19 @@ nav {
 
 /* FAQ Hero Image */
 .hero-faq {
-  background: url('faq.jpg') no-repeat center center;
+  background: url('images/faq.jpg') no-repeat center center;
   background-size: cover;
   height: 50vh;
 }
 /* Blog Hero Image */
 .hero-blog {
-  background: url('dev/journal.jpg') no-repeat center center;
+  background: url('images/journal.jpg') no-repeat center center;
   background-size: cover;
   height: 60vh;
 }
 /* About Page Hero (clean image, no overlay text) */
 .hero-about {
-  background: url('coffeeroastingoffice.jpg') no-repeat center center;
+  background: url('images/coffeeroastingoffice.jpg') no-repeat center center;
   background-size: cover;
   height: 60vh;
 }
