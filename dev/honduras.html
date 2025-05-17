@@ -12,7 +12,7 @@
 
 <body>
 
-<!-- Site Header -->
+  <!-- Site Header -->
 <header class="site-header">
   <div class="container">
     <div class="logo">
@@ -31,22 +31,14 @@
       </ul>
       <div class="hamburger">&#9776;</div>
     </nav>
-
-<!-- Cart Icon -->
-          
-    <div class="cart-icon">
-      <span id="cart-notification">0</span>
-      <img src="cart-icon.png" alt="Cart">
-    </div> 
-    
   </div>
 </header>
 
-
- <!-- saved code for later -- product page section 
  <section class="featured-container">
+
+
   <div class="product-page">
-    <img src="honduraspaint.jpg" alt="Honduras Del Campo">
+    <img src="images/honduraspaint.jpg" alt="Honduras Del Campo">
     <h3>Honduras Del Campo HG EP</h3>
     <p><strong>Price:</strong> $18 per 12 oz bag + shipping<br>
     </p>
@@ -78,26 +70,7 @@
    </p>
    
     <p>
- <p>
-  <button onclick="addToCart({ id: 1, name: 'Honduras Del Campo HG EP', price: 18.00 })" class="btn">Add to Cart</button>
-</p>
-
-  </div>
-</section>
--->
-<!-- Product Page Section -->
-<section class="featured-container">
-  <div class="product-page">
-    <img src="images/honduraspaint.jpg" alt="Honduras Del Campo">
-    <h3>Honduras Del Campo HG EP</h3>
-    <p><strong>Price:</strong> $18 per 12 oz bag + shipping</p>
-	
-<!-- Add to Cart Button -->	
-	<button onclick="addToCart({ id: 1, name: 'Honduras Del Campo HG EP', price: 18.00 })" class="btn">Add to Cart</button>
-	
-<!-- Empty Cart Button -->
-    <button onclick="emptyCart()">Empty Cart</button>
-	 
+     <a href="order.html" class="btn">Order</a></p>
   </div>
 </section>
 
@@ -105,62 +78,13 @@
     <p>&copy; 2025 Essential Services Coffee Roasters - Alta, WY</p>
     <p><a href="https://instagram.com/essentialservicescoffee" target="_blank">Follow us on Instagram</a></p>
   </footer>
-    <!-- JavaScript goes here -->
+  
     <script>
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
-    </script>
-	
-<script>
-  
-// Function to add an item to the cart
-  
-  function addToCart(item) {
-// Retrieve the current cart from localStorage (or initialize it as an empty array)
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
-// Add the new item to the cart array
-    cart.push(item);
-  
-// Store the updated cart back into localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
-  
-// Update the cart notification to reflect the number of items in the cart
-    updateCartNotification();
-  }
-    
- // Function to empty the cart
-   function emptyCart() {
- // Remove the cart from localStorage
-     localStorage.removeItem('cart');
-   
- // Update the cart notification to show 0 items
-     updateCartNotification();
-   
- // Optionally reset any other elements, like cart items displayed on the page
-     alert('Your cart has been emptied!');
-   }
-   
-  // Function to update the cart notification (cart count)
-   function updateCartNotification() {
-  // Retrieve the cart from localStorage
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-   
-  // Get the number of items in the cart
-      let cartCount = cart.length;
-   
-  // Update the cart notification display (can be anywhere on the page)
-      document.getElementById('cart-notification').innerText = cartCount;
-   }
-   
-   // Ensure the cart notification is updated when the page loads
-   window.onload = function() {
-     updateCartNotification();
-   };
-   
-</script>
+  </script>
 </body>
 </html>
