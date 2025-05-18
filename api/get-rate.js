@@ -56,11 +56,11 @@ module.exports = async function handler(req, res) {
           state: "XX",
           zip: zipCode,
           country: "US"
-        },    		
+        },
         parcels: [{
           length: "13",
           width: "16",
-          height: "1",
+          height: "1", // thin poly mailer
           distance_unit: "in",
           weight: "14",
           mass_unit: "oz"
@@ -76,7 +76,10 @@ module.exports = async function handler(req, res) {
       return res.status(response.status).json({ error: data });
     }
 
-    const simplifiedRates = data.rates.map(rate => ({
+    // Filter rates to include only USPS
+    const uspsRates = data.rates.filter(rate => rate.provider === 'USPS');
+
+    const simplifiedRates = uspsRates.map(rate => ({
       amount: rate.amount,
       servicelevel: rate.servicelevel?.name,
       estimated_days: rate.estimated_days
