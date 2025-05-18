@@ -1,3 +1,5 @@
+console.log("🔥 get-rate.js triggered | method:", req.method, "| origin:", req.headers.origin);
+
 module.exports = async function handler(req, res) {
   const allowedOrigins = [
     'https://essentialservices.coffee',
