@@ -1,9 +1,17 @@
 {
+  "builds": [
+    { "src": "api/*.js", "use": "@vercel/node" }
+  ],
   "routes": [
+    {
+      "src": "^https://www\\.essentialservices\\.coffee(?:/(.*))?$",
+      "headers": { "Location": "https://essentialservices.coffee/$1" },
+      "status": 308
+    },
     {
       "src": "/api/(.*)",
       "methods": ["GET", "POST", "OPTIONS"],
-      "dest": "/api/$1"
+      "dest": "/api/$1.js"
     }
   ]
 }

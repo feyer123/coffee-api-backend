@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - Essential Services Coffee Roasters</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="logo">
+      <a href="/">
+        <img src="images/essential.svg" alt="Essential Services Coffee Roasters Logo" class="logo-img">
+      </a>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="featured.html">Roasts</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger">&#9776;</div>
+    </nav>
+  </div>
+  </header>
+  <section class="hero-faq">
+  <div class="hero hero-faq">
+    <h1>Frequently Asked Questions</h1>
+
+  </div>
+</section>
+
+
+
+  <!-- FAQ Container -->
+  <section class="faq-container">
+
+    <div class="faq-item">
+      <button class="faq-question">What makes your coffee different?</button>
+      <div class="faq-answer">
+        <p>At Essential Service Coffee, every bag starts with carefully selected single-origin green beans - no blends, just one
+ 		   source per roast so you can taste the true character of each origin. We source from multiple trusted suppliers to offer
+		   a rotating variety of standout coffees throughout the year.</p>
+		   
+        <p>Unlike large roasters, we hand-roast in small batches with precision and care, not automation. Each roast is crafted 
+		    to highlight the bean’s natural flavor—not masked by dark roasts or blending. We roast to order, and the roast date 
+			is stamped right on the label, so you know exactly how fresh your coffee is when it arrives.Our goal isn’t volume—it’s 
+			quality, character, and connection.</p>
+    	</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">How fresh is the coffee when it ships?</button>
+      <div class="faq-answer">
+        <p>We roast to order to ensure you get the freshest coffee possible. Most experts agree coffee hits its peak flavor 
+		   between 4 and 14 days after roasting, so we identify the roast date on your bag label. Once you place your order, 
+		   we’ll confirm the next available roast date and ship it shortly after, so your beans arrive tasting their best. 
+		   If you don't know when your beans were roasted, your doing it wrong.</p>
+		   
+		<p>While coffee can still be enjoyable for weeks afterward, we recommend using your beans within 30 days of the 
+		   roast date for optimal flavor. Keep them sealed and stored in a cool, dry place away from sunlight for best results.</p>
+		   
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Can you send me pre-ground coffee?</button>
+      <div class="faq-answer">
+        <p>Seriously? Maybe you take a few minutes to read our <a href="https://essentialservices.coffee/blog.html"> Blog</a>..</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Where do you ship?</button>
+      <div class="faq-answer">
+        <p>We currently ship anywhere in the U.S.</p>
+      </div>
+	</div> 
+	
+	      <div class="faq-item">
+      <button class="faq-question">How should I store my coffee?</button>
+      <div class="faq-answer">
+        <p>Keep it in a cool, dry place in an airtight container. No fridge or freezer needed—just fresh air out, and flavor in.</p>
+      </div>
+	</div>
+	  	      <div class="faq-item">
+      <button class="faq-question">Do you offer subscriptions?</button>
+      <div class="faq-answer">
+        <p>Not yet, but we’re planning to roll them out soon. In the meantime, you can order as often as you like.</p>
+      </div>
+	</div>	  
+	  	      <div class="faq-item">
+      <button class="faq-question">Still have questions?</button>
+      <div class="faq-answer">
+        <p><a href="contact.html">Contact us</a> with any questions you might have.</p></p>
+      </div>
+	</div>
+
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Essential Services Coffee Roasters - Alta, WY</p>
+    <p><a href="https://instagram.com/essentialservicescoffee" target="_blank">Follow us on Instagram</a></p>
+  </footer>
+
+  <!-- Small JS to handle FAQ toggle -->
+  <script>
+    const questions = document.querySelectorAll('.faq-question');
+    questions.forEach(q => {
+      q.addEventListener('click', () => {
+        q.classList.toggle('active');
+        const answer = q.nextElementSibling;
+        answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + 'px';
+      });
+    });
+  </script>
+  
+    <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>

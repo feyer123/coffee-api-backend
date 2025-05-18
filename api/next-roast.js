@@ -1,13 +1,28 @@
-import { DateTime } from 'luxon';
+const { DateTime } = require('luxon');
 
-export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://essentialservices.coffee');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+module.exports = async function handler(req, res) {
+  console.log('🌐 Origin:', req.headers.origin);
 
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
+  const allowedOrigins = [
+    'https://essentialservices.coffee',
+    'https://prod-h40ws1sao-tom-feyereisens-projects.vercel.app',
+    'https://dev-gonl0leci-tom-feyereisens-projects.vercel.app',
+    'https://dev.essentialservices.coffee'
+  ];
+  
+const origin = req.headers.origin;
+if (allowedOrigins.includes(origin)) {
+  res.setHeader('Access-Control-Allow-Origin', origin);
+  res.setHeader('Vary', 'Origin');
+  res.setHeader('Cache-Control', 'no-store'); // ✅ Prevent caching by Vercel edge
+}
+  
+res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+if (req.method === 'OPTIONS') {
+  return res.status(200).end();
+}
 
   try {
     const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR8VZ4mppZjFZC2_Zv-MOAYamh0aHWSoefekLDwJvZUksr_Q-z7dVVs_XIKZcjFJ7dqDZ8GCx_B4EzC/pub?output=csv';
@@ -42,4 +57,4 @@ export default async function handler(req, res) {
     console.error('❌ Error fetching or parsing sheet:', err);
     res.status(500).json({ error: 'Failed to load roast dates' });
   }
-}
+};
