@@ -1,8 +1,4 @@
-const { DateTime } = require('luxon');
-
 module.exports = async function handler(req, res) {
-  console.log('🌐 Origin:', req.headers.origin);
-
   const allowedOrigins = [
     'https://essentialservices.coffee',
     'https://prod-h40ws1sao-tom-feyereisens-projects.vercel.app',
@@ -11,14 +7,18 @@ module.exports = async function handler(req, res) {
   ];
 
   const origin = req.headers.origin;
+
+  // ✅ Always set CORS headers if origin is allowed
   if (allowedOrigins.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Vary', 'Origin');
   }
 
-  res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
+  // ✅ These are always needed
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
+  // ✅ Preflight response
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -51,7 +51,7 @@ module.exports = async function handler(req, res) {
         },
         address_to: {
           name: "Customer",
-          street1: "123 Main St", // Placeholder; only zip is used
+          street1: "123 Main St",
           city: "City",
           state: "XX",
           zip: zipCode,
@@ -60,7 +60,7 @@ module.exports = async function handler(req, res) {
         parcels: [{
           length: "13",
           width: "16",
-          height: "1", // thin poly mailer
+          height: "1",
           distance_unit: "in",
           weight: "14",
           mass_unit: "oz"
@@ -76,7 +76,6 @@ module.exports = async function handler(req, res) {
       return res.status(response.status).json({ error: data });
     }
 
-    // Filter rates to include only USPS
     const uspsRates = data.rates.filter(rate => rate.provider === 'USPS');
 
     const simplifiedRates = uspsRates.map(rate => ({
