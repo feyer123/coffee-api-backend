@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog – Essential Services Coffee</title>
+  <link rel="stylesheet" href="styles.css?v=12">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="logo">
+      <a href="/">
+        <img src="images/essential.svg" alt="Essential Services Coffee Roasters Logo" class="logo-img">
+      </a>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="featured.html">Roasts</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger">&#9776;</div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero-contact-wrapper">
+  <div class="hero-contact">
+    <img src="images/journal.jpg" alt="Blog Hero Image">
+    <div class="hero-overlay">
+       <h1>Roaster’s Journal</h1>
+       <p>Notes, thoughts, and discoveries from behind the roaster.</p>
+      <ul class="blog-links">
+	          <li>
+          <a href="blog-icedcoffee.html">Make Great Iced Coffee at Home</a>
+          <span class="post-date">May 18, 2025</span>
+        </li>
+        <li>
+          <a href="blog-singlesource.html">What's the best "Source" for flavorable coffee beans?</a>
+          <span class="post-date">May 1, 2025</span>
+        </li>
+        <li>
+          <a href="blog-freshgrind.html">The Case for Freshly Ground Coffee</a>
+          <span class="post-date">April 10, 2025</span>
+        </li>
+        <li>
+          <a href="blog-roastfreshness.html">Timing is Everything</a>
+          <span class="post-date">March 29, 2025</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>&copy; 2025 Essential Services Coffee Roasters - Alta, WY</p>
+  <p><a href="https://instagram.com/essentialservicescoffee" target="_blank">Follow us on Instagram</a></p>
+</footer>
+
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+
+</body>
+</html>
