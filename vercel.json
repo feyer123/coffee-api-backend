@@ -9,6 +9,10 @@
       "dest": "/api/$1.js"
     },
     {
+      "src": "/checkout2.html",
+      "dest": "/dev/checkout2.html"
+    },
+    {
       "src": "/checkout.html",
       "dest": "/dev/checkout.html"
     },
@@ -20,10 +24,6 @@
       "src": "/checkout",
       "dest": "/dev/checkout.html"
     },
-	{
-      "src": "/checkout2.html",
-      "dest": "/dev/checkout2.html"
-    }
     {
       "src": "/cart",
       "dest": "/dev/cart.html"
