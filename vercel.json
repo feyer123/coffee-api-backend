@@ -1,13 +1,9 @@
 {
-  "builds": [
-    { "src": "api/*.js", "use": "@vercel/node" }
-  ],
   "routes": [
     {
       "src": "/api/(.*)",
       "methods": ["GET", "POST", "OPTIONS"],
       "dest": "/api/$1.js"
     }
-  ],
-  "outputDirectory": "public"
+  ]
 }
