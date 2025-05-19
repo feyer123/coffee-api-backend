@@ -11,9 +11,12 @@ module.exports = async function handler(req, res) {
 
   console.log("🔥 get-rate2.js triggered | method:", req.method, "| origin:", origin);
 
-  // ✅ Set CORS headers if allowed
-  if (allowedOrigins.includes(origin) || isDev) {
-    res.setHeader('Access-Control-Allow-Origin', origin || '*');
+  // ✅ Set CORS headers
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else if (isDev && !origin) {
+    // Allow requests like curl in dev
+    res.setHeader('Access-Control-Allow-Origin', '*');
   } else {
     console.warn('⚠️ CORS blocked for origin:', origin);
     return res.status(403).json({ error: 'CORS origin not allowed' });
