@@ -1,6 +1,8 @@
-console.log("🔥 get-rate.js triggered | method:", req.method, "| origin:", req.headers.origin);
+const { DateTime } = require('luxon');
 
 module.exports = async function handler(req, res) {
+  console.log('🌐 Origin:', req.headers.origin);
+
   const allowedOrigins = [
     'https://essentialservices.coffee',
     'https://prod-h40ws1sao-tom-feyereisens-projects.vercel.app',
@@ -9,18 +11,14 @@ module.exports = async function handler(req, res) {
   ];
 
   const origin = req.headers.origin;
-
-  // ✅ Always set CORS headers if origin is allowed
   if (allowedOrigins.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Vary', 'Origin');
   }
 
-  // ✅ These are always needed
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // ✅ Preflight response
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -29,66 +27,29 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { zipCode } = req.body;
+  const { zipCode, weightOz } = req.body;
 
-  if (!zipCode) {
-    return res.status(400).json({ error: 'Missing zipCode' });
+  if (!zipCode || !weightOz) {
+    return res.status(400).json({ error: 'Missing zipCode or weightOz' });
   }
 
   try {
-    const response = await fetch('https://api.goshippo.com/shipments/', {
-      method: 'POST',
-      headers: {
-        Authorization: `ShippoToken ${process.env.SHIPPO_API_KEY}`,
-        'Content-Type': 'application/json'
+    const rates = [
+      {
+        amount: "5.80",
+        servicelevel: "USPS Ground Advantage",
+        estimated_days: 3
       },
-      body: JSON.stringify({
-        address_from: {
-          name: "Essential Services Coffee",
-          street1: "70 Perimeter Dr",
-          city: "Alta",
-          state: "WY",
-          zip: "83414",
-          country: "US"
-        },
-        address_to: {
-          name: "Customer",
-          street1: "123 Main St",
-          city: "City",
-          state: "XX",
-          zip: zipCode,
-          country: "US"
-        },
-        parcels: [{
-          length: "13",
-          width: "16",
-          height: "1",
-          distance_unit: "in",
-          weight: "14",
-          mass_unit: "oz"
-        }],
-        async: false
-      })
-    });
+      {
+        amount: "8.95",
+        servicelevel: "USPS Priority Mail",
+        estimated_days: 2
+      }
+    ];
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      console.error('Shippo error response:', data);
-      return res.status(response.status).json({ error: data });
-    }
-
-    const uspsRates = data.rates.filter(rate => rate.provider === 'USPS');
-
-    const simplifiedRates = uspsRates.map(rate => ({
-      amount: rate.amount,
-      servicelevel: rate.servicelevel?.name,
-      estimated_days: rate.estimated_days
-    }));
-
-    return res.status(200).json(simplifiedRates);
+    return res.status(200).json(rates);
   } catch (error) {
-    console.error('Error getting rate from Shippo:', error);
+    console.error('Error getting rate:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 };

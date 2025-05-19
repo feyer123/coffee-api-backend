@@ -35,13 +35,23 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-
-  const { zipCode } = req.body;
-
-  if (!zipCode) {
-    return res.status(400).json({ error: 'Missing zipCode' });
+  
+  let body = {};
+  
+  try {
+    body = req.body || JSON.parse(await streamToString(req));
+  } catch (err) {
+    console.error("❌ Failed to parse request body:", err);
+    return res.status(400).json({ error: 'Invalid JSON' });
   }
-
+  
+  const { zipCode } = body;
+  
+  
+    if (!zipCode) {
+      return res.status(400).json({ error: 'Missing zipCode' });
+    }
+  
   try {
     const response = await fetch('https://api.goshippo.com/shipments/', {
       method: 'POST',
@@ -100,3 +110,13 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+    
+    function streamToString(stream) {
+      return new Promise((resolve, reject) => {
+        let data = '';
+        stream.on('data', chunk => data += chunk);
+        stream.on('end', () => resolve(data));
+        stream.on('error', err => reject(err));
+      });
+    }
+    
