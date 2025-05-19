@@ -10,7 +10,7 @@
     },
     {
       "src": "/checkout2.html",
-      "dest": "/dev/checkout2.html"
+      "dest": "/public/checkout2.html"
     },
     {
       "src": "/checkout.html",
