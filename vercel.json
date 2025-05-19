@@ -4,14 +4,29 @@
   ],
   "routes": [
     {
-      "src": "^https://www\\.essentialservices\\.coffee(?:/(.*))?$",
-      "headers": { "Location": "https://essentialservices.coffee/$1" },
-      "status": 308
-    },
-    {
       "src": "/api/(.*)",
       "methods": ["GET", "POST", "OPTIONS"],
       "dest": "/api/$1.js"
+    },
+    {
+      "src": "/checkout.html",
+      "dest": "/dev/checkout.html"
+    },
+    {
+      "src": "/cart.html",
+      "dest": "/dev/cart.html"
+    },
+    {
+      "src": "/checkout",
+      "dest": "/dev/checkout.html"
+    },
+    {
+      "src": "/cart",
+      "dest": "/dev/cart.html"
+    },
+    {
+      "src": "/",
+      "dest": "/dev/index.html"
     }
   ]
 }
