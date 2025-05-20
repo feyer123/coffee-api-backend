@@ -1,3 +1,5 @@
+console.log("✔ checkout.js is finally running.");
+
 document.addEventListener("DOMContentLoaded", () => {
   const cartSummaryContainer = document.getElementById("cart-summary");
   const subtotalEl = document.getElementById("checkout-subtotal");
