@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (cart.length === 0) {
       cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
       subtotalEl.textContent = "0.00";
+      updateCartIcon(); // ✅ Update icon when cart is empty
       return;
     }
 
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     subtotalEl.textContent = subtotal.toFixed(2);
     bindRemoveButtons();
+    updateCartIcon(); // ✅ Update icon after rendering
   }
 
   function bindRemoveButtons() {
@@ -51,7 +53,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     cart.splice(index, 1);
     localStorage.setItem("cart", JSON.stringify(cart));
-    loadCart();
+    loadCart(); // re-render and update icon
+  }
+
+  function updateCartIcon() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const totalCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    const icon = document.getElementById("cart-count");
+    if (icon) icon.textContent = totalCount;
   }
 
   if (checkoutBtn) {
@@ -60,6 +69,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Run on load
-  loadCart();
+  loadCart(); // Initial render
 });

@@ -9,5 +9,15 @@ function addToCart(name, price) {
   }
 
   localStorage.setItem('cart', JSON.stringify(cart));
+
+  // ✅ NEW: update the cart icon count
+  updateCartIcon();
+
   alert(`${name} added to cart`);
+}
+function updateCartIcon() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+  const icon = document.getElementById('cart-count');
+  if (icon) icon.textContent = count;
 }
