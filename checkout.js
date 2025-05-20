@@ -1,4 +1,4 @@
-console.log("✔ checkout.js is finally running.");
+console.log("✅ checkout.js FINAL TEST 2 at " + new Date().toISOString());
 
 document.addEventListener("DOMContentLoaded", () => {
   const cartSummaryContainer = document.getElementById("cart-summary");
