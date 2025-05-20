@@ -1,3 +1,5 @@
+console.log("✅ cart.js is now running at " + new Date().toISOString());
+
 document.addEventListener("DOMContentLoaded", () => {
   const cartItemsContainer = document.getElementById("cart-items");
   const subtotalEl = document.getElementById("cart-subtotal");
