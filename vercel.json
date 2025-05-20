@@ -5,7 +5,21 @@
       "dest": "/check.html"
     },
     {
+      "src": "/api/(.*)",{
+  "routes": [
+    {
+      "src": "/check.html",
+      "dest": "/check.html"
+    },
+    {
       "src": "/api/(.*)",
+      "methods": ["GET", "POST", "OPTIONS"],
+      "dest": "/api/$1.js"
+    }
+  ],
+  "alias": "dev.essentialservices.coffee"
+}
+
       "methods": ["GET", "POST", "OPTIONS"],
       "dest": "/api/$1.js"
     }
