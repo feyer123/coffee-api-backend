@@ -55,13 +55,23 @@ document.addEventListener("DOMContentLoaded", () => {
         shippingRatesContainer.innerHTML = "<p>No shipping options found.</p>";
         return;
       }
-
-      shippingRatesContainer.innerHTML = "";
-      rates.forEach(rate => {
-        const rateEl = document.createElement("p");
-        rateEl.textContent = `${rate.servicelevel} – $${rate.amount} (${rate.estimated_days} days)`;
-        shippingRatesContainer.appendChild(rateEl);
-      });
+    
+    shippingRatesContainer.innerHTML = ""; // Clear loading message
+    
+    rates.forEach((rate, index) => {
+      const id = `rate-${index}`;
+    
+      const rateEl = document.createElement("div");
+      rateEl.innerHTML = `
+        <label>
+          <input type="radio" name="shipping-rate" value="${rate.amount}" data-service="${rate.servicelevel}" id="${id}">
+          ${rate.servicelevel} – $${rate.amount} (${rate.estimated_days} days)
+        </label>
+      `;
+    
+      shippingRatesContainer.appendChild(rateEl);
+    });
+    
     })
     .catch(err => {
       console.error("Shipping rate error:", err);
