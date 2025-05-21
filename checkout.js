@@ -35,14 +35,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!zipCode || zipCode.length < 5) return;
 
     shippingRatesContainer.innerHTML = "<p>Loading rates...</p>";
-
+    
     fetch("https://dev.essentialservices.coffee/api/get-rate2", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ zipCode })
+      body: JSON.stringify({ zip: zipCode, cart })
     })
+    
     .then(res => res.json())
     .then(rates => {
       if (!Array.isArray(rates)) {
