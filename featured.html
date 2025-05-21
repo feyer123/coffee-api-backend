@@ -24,39 +24,30 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="contact.html">Contact</a></li>
-     		  
-          <li>
-            <a href="cart.html" class="cart-icon">
-              🛒 <span id="cart-count">0</span>
-            </a>
-          </li>
-   
       </ul>
       <div class="hamburger">&#9776;</div>
     </nav>
   </div>
 </header>
 
-
-    <!-- Testing automated dev deployment -->
+  <!-- Featured Products Grid -->
   <section class="featured-container">
 
     <h2>Our Featured Roasts</h2>
 
     <div class="product-grid">
-  	
-      <!-- Product Card 1 -->
-      <div class="product-card">
-        <img src="images/honduraspaint.jpg" alt="Honduras Del Campo">
+	
+      <!-- Product Card 3 -->
+	  <div class="product-card">
+       <img src="images/honduraspaint.jpg" alt="Honduras Del Campo">
         <div class="product-info">
-          <h3>Honduras Del Campo</h3>
-          <p>Sourced from small farms in Honduras' western highlands, this washed-processed "Del Campo" (from the countryside) coffee boasts a balanced and bright flavor profile.</p>
+       <h3>Honduras Del Campo</h3>
+        <p>Sourced from small farms in Honduras' western highlands, this washed-processed "Del Campo" (from the countryside) coffee boasts a balanced and bright flavor profile.</p>
         </div>
-        <a href="honduras.html" class="btn">Learn More</a>
-        <button class="btn add-to-cart" onclick="addToCart('Honduras Del Campo', 18.00)">Add to Cart</button>
+	     <a href="honduras.html" class="btn">Learn More</a>
       </div>
-      
-      <!-- Product Card 2 -->
+
+      <!-- Product Card 1 -->
       <div class="product-card">
         <img src="images/peru3.jpg" alt="Organic Peruvian">
 	        <div class="product-info">	
@@ -64,10 +55,9 @@
             </div>
 		<p>Bright floral notes with a smooth citrus finish. A classic African coffee profile.</p>
         <a href="peru.html" class="btn">Learn More</a>
-		<button class="btn add-to-cart" onclick="addToCart('Organic Peruvian', 18.00)">Add to Cart</button>
       </div>
 
-      <!-- Product Card 3 -->
+      <!-- Product Card 2 -->
       <div class="product-card">
         <img src="images/watertanz.jpg" alt="Tanzania Iyula Peaberry">
           <div class="product-info">		
@@ -75,22 +65,21 @@
 	      </div>	
         <p>Rich chocolate tones balanced by sweet berry notes. Perfect for any brew method.</p>
         <a href="tanzania.html" class="btn">Learn More</a>
-		<button class="btn add-to-cart" onclick="addToCart('Tanzania Iyula Peaberry', 18.00)">Add to Cart</button>
       </div>
-	  
-     <!-- Add more cards as needed -->
+
+
+
+      <!-- Add more cards as needed -->
 
     </div>
   </section>
-  
+
   <!-- Site Footer -->
   <footer class="site-footer">
     <p>&copy; 2025 Essential Services Coffee Roasters - Alta, WY</p>
     <p><a href="https://instagram.com/essentialservicescoffee" target="_blank">Follow us on Instagram</a></p>
   </footer>
   
-    <script src="featured.js?v=1"></script>
-
     <script>
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
