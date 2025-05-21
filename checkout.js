@@ -1,5 +1,3 @@
-console.log("✅ checkout.js FINAL TEST 2 at " + new Date().toISOString());
-
 document.addEventListener("DOMContentLoaded", () => {
   const cartSummaryContainer = document.getElementById("cart-summary");
   const subtotalEl = document.getElementById("checkout-subtotal");
@@ -33,16 +31,23 @@ document.addEventListener("DOMContentLoaded", () => {
   zipInput.addEventListener("blur", () => {
     const zipCode = zipInput.value.trim();
     if (!zipCode || zipCode.length < 5) return;
-
-    shippingRatesContainer.innerHTML = "<p>Loading rates...</p>";
     
-    fetch("https://dev.essentialservices.coffee/api/get-rate2", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ zip: zipCode, cart })
-    })
+    shippingRatesContainer.innerHTML = "";
+    
+    rates.forEach((rate, index) => {
+      const id = `rate-${index}`;
+    
+      const rateEl = document.createElement("div");
+      rateEl.innerHTML = `
+        <label>
+          <input type="radio" name="shipping-rate" value="${rate.amount}" data-service="${rate.servicelevel}" id="${id}">
+          ${rate.servicelevel} – $${rate.amount} (${rate.estimated_days} days)
+        </label>
+      `;
+    
+      shippingRatesContainer.appendChild(rateEl);
+    });
+    
     
     .then(res => res.json())
     .then(rates => {
