@@ -1,5 +1,6 @@
 {
-  "public": true,
+// force update
+   "public": true,
   "routes": [
     {
       "src": "/check.html",
