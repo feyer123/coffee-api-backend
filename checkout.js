@@ -79,3 +79,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+    
+    document.getElementById("submit-order").addEventListener("click", () => {
+      const selectedRate = document.querySelector('input[name="shipping-rate"]:checked');
+      if (!selectedRate) {
+        alert("Please select a shipping option.");
+        return;
+      }
+    
+      const shippingAmount = parseFloat(selectedRate.value);
+      const serviceLevel = selectedRate.dataset.service;
+    
+      console.log("✅ Shipping selected:", { shippingAmount, serviceLevel });
+    
+      // You can extend this block in Step 3 to send email or store order
+    });
+    
+
